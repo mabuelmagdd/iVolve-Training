@@ -13,6 +13,7 @@
 ![image](https://github.com/user-attachments/assets/05bb7424-8e46-43d2-bcae-190777ace9e1)
 
 ### 2. Create LVs
+![image](https://github.com/user-attachments/assets/3bd1ce9d-6e3a-4580-bf6c-0867b1e781f6)
 ![image](https://github.com/user-attachments/assets/d8f0e57c-b16f-4c61-98dd-b77f966f06e1)
 ![image](https://github.com/user-attachments/assets/c8273135-2706-43eb-93bc-c1ec86337ee6)
 #### 2.1 Before Extension
