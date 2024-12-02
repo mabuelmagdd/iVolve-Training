@@ -7,12 +7,11 @@
 ## Steps:
 
 ### 1. Create script that loops over the range from 0 to 255 to ping every server in subnet 
-
-
+![image](https://github.com/user-attachments/assets/0dcc9e0c-c82d-44c9-a1c9-cc3ef820ae0a)
 ### 2. Change file permissions and run file
-
-
+![image](https://github.com/user-attachments/assets/07eb31a9-6be5-4c83-80bc-70c9f083ab61)
 ### 3. Result
+![image](https://github.com/user-attachments/assets/1cc10e17-65d5-4505-8e5d-96b00ecd408d)
 
 
 
