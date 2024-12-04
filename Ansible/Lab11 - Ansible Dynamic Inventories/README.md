@@ -5,6 +5,7 @@
 ### Set up Ansible dynamic inventories to automatically discover and manage infrastructure. Use Ansible Galaxy role to install Apache.
 **What is a Dynamic Inventory?**
 Dynamic inventories in Ansible allow you to source your inventory data from external systems dynamically. This can be from cloud providers, databases, or any system that can output JSON formatted to Ansible’s specifications.
+
 **Why Use Dynamic Inventories?**
   •	Scalability: Automatically adapts to changes in your infrastructure.
   •	Accuracy: Ensures that your playbooks use the most current server information.
