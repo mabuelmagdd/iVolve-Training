@@ -16,11 +16,16 @@ An Ansible role is a collection of tasks used to configure a host for a specific
 - **Access**: SSH access to the target server with sudo privileges
   
 2. Ensure the following files are present:
-   - `inventory`: make sure the inventory 
-   - `ansible.cfg`:
-   - `playbook10.yaml`:
-   
-  
+   - `inventory`: make sure the inventory has the public DNS of the instance
+   - `ansible.cfg`: put the paths for the inventory file, keypair file, and roles directory
+   - `jenkins-main`: file to install Jenkins on target machine
+     *copy contents of this file to roles/jenkins/tasks/main.yaml*
+   - `docker-main`: file to install Docker on target machine
+     *copy contents of this file to roles/docker/tasks/main.yaml*
+   - `oc-main`: file to install OpenShift CLI on target machine
+     *copy contents of this file to roles/oc/tasks/main.yaml*
+   - `playbook10.yaml`
+
 
 ## **Steps:**
 
@@ -35,7 +40,14 @@ An Ansible role is a collection of tasks used to configure a host for a specific
  ansible-galaxy init docker
  ansible-galaxy init oc
   ```
-#### 3. 
+#### 3. Run the `tree` commmand to see the structure of the roles 
+  ```
+  tree
+  ```
+#### 4. Run the playbook
+  ```
+  ansible-playbook playbook10
+  ```
 
 
 
