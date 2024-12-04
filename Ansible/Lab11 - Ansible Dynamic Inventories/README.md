@@ -3,6 +3,7 @@
 ## **Objective**
 
 ### Set up Ansible dynamic inventories to automatically discover and manage infrastructure. Use Ansible Galaxy role to install Apache.
+
 **What is a Dynamic Inventory?**
 Dynamic inventories in Ansible allow you to source your inventory data from external systems dynamically. This can be from cloud providers, databases, or any system that can output JSON formatted to Ansible’s specifications.
 
@@ -14,17 +15,21 @@ Dynamic inventories in Ansible allow you to source your inventory data from exte
 ## **Prerequisites**
 1. Before running this lab, ensure you have the following:
 - **Operating System**: Ubuntu 24.04
-- **Ansible Version**: 2.9 or higher
+- **Install Ansible**: 2.9 or higher
   ```
   sudo apt install ansible -y
   ```
-- **AWS CLI**
+- **Install AWS CLI**
   ```
   sudo snap install aws-cli --classic
   ```
-- **boto3**
+- **Install boto3**
   ```
   sudo apt install python3-boto3
+  ```
+- **Use Ansible Galaxy role to install Apache **
+  ```
+  ansible-galaxy install geerlingguy.apache
   ```
 - **Target Server**: Remote or local machine with Ubuntu 24.04 installed
 - **Access Keys**: Save access and secret access keys to be used to connect to aws account 
