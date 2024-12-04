@@ -1,0 +1,25 @@
+---
+# tasks file for oc
+
+- name: download oc cli
+  get_url:
+    url: https://mirror.openshift.com/pub/openshift-v4/clients/oc/latest/linux/oc.tar.gz
+    dest: /tmp/oc.tar.gz
+
+- name: extract
+  unarchive:
+    src: /tmp/oc.tar.gz
+    dest: /usr/local/bin/
+    remote_src: yes
+
+- name: Ensure OpenShift CLI is executable
+  file:
+    path: /usr/local/bin/oc
+    mode: '0755'
+
+# Cleanup temporary files
+- name: Remove downloaded tarball
+  file:
+    path: /tmp/oc.tar.gz
+    state: absent
+

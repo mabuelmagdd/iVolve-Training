@@ -1,0 +1,39 @@
+---
+# tasks file for jenkins
+    - name: download jenkins key 
+      #to ensure the pkg has not been tampered
+      #without the key the system will show warnings when attemping to dowload jenkins
+      ansible.builtin.get_url:
+        url: https://pkg.jenkins.io/debian-stable/jenkins.io-2023.key
+        dest: /usr/share/keyrings/jenkins-keyring.asc
+        mode: '0644'
+
+    - name: Add Jenkins repository with keyring
+      ansible.builtin.apt_repository:
+        repo: 'deb [signed-by=/usr/share/keyrings/jenkins-keyring.asc] https://pkg.jenkins.io/debian-stable binary/'
+        state: present
+  
+    - name: update cache 
+      apt:
+        update_cache: yes
+        state: latest
+
+    - name: Install Java (OpenJDK 17)
+      apt:
+        name: openjdk-17-jdk
+        state: present
+
+    - name: Install Jenkins
+      apt:
+        name: jenkins
+        state: present
+
+    # Start and enable Jenkins service
+    - name: Ensure Jenkins service is running
+      service:
+        name: jenkins
+        state: started
+        enabled: true
+
+
+

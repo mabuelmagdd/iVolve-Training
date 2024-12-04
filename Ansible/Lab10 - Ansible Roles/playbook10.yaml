@@ -1,0 +1,8 @@
+---
+- hosts: server
+  become: yes
+  roles:
+    - role: jenkins
+    - role: docker
+    - role: oc
+
