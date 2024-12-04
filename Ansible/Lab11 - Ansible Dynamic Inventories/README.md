@@ -42,25 +42,47 @@ Dynamic inventories in Ansible allow you to source your inventory data from exte
 
 ## **Steps:**
 
-#### 1. Set up your AWS CLI with your credentials and configuration
+#### 1. Add tag so that you can filter out the targeted instances that will be in the inventory on the EC2 instance 
+![image](https://github.com/user-attachments/assets/db39bfc5-ea96-4503-93bf-fb98f2ae93f7)
+
+#### 2. On EC2 instance create a keypair .PEM file and ACCESS Keys
+#### 3. Change the .PEM file permisions on management node 
+ ```
+  chmod 400 <path-to-pem-file>
+  ```
+#### 2. Set up your AWS CLI with your credentials and configuration
   ```
   aws configure
   ```
-  This allows you to interact with AWS services from the command line without needing to manually input credentials each time.
+  It prompts you to enter your `AWS Access Key ID`, `Secret Access Key`, `default region`, and `output format`. This allows you to interact with AWS services from the command line without needing to manually input credentials each time.
   
-#### 2. Create roles using `ansible-galaxy`
+#### 3. Create dynamic inventory
   ```
- ansible-galaxy init jenkins
- ansible-galaxy init docker
- ansible-galaxy init oc
+ --- 
+plugin: aws_ec2
+regions:
+  - us-east-1
+filters:
+  # this selects only running instances with tag Name of value Ansible
+  "tag:Name": "Ansible"
+  "instance-state-name": "running"
+keyed_groups:
+  - key: tags.Name
+    prefix: 'tag_'
   ```
-#### 3. Run the `tree` commmand to see the structure of the roles 
+#### 4. Create `ansible.cfg` 
+ Add the paths to the inventory and the keypair files.
+#### 5. Test and display the correctness of your dynamic inventory configuration 
   ```
-  tree
+  ansible-inventory --list
   ```
-#### 4. Run the playbook
+#### 6. Test and visualize the relationships and groupings of hosts within the inventory 
   ```
-  ansible-playbook playbook10
+ ansible-inventory -i <inventoryfile> --graph
+  ```
+#### 7. Run playbook
+  ```
+ ansible-playbook playbook.yaml
   ```
 
 
