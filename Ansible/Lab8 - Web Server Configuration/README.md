@@ -23,4 +23,5 @@ chmod 400 <path-to-pem-file>
 ![image](https://github.com/user-attachments/assets/86f87705-b9a0-4ba8-ad5e-78c23479b658)
 
 ### 6. Test 
-![image](https://github.com/user-attachments/assets/47cf6039-7c86-4c87-933a-4350a7cc48db)
+![image](https://github.com/user-attachments/assets/428d5ad6-ba5f-4f8c-932a-4252c9fb80b8)
+
