@@ -36,14 +36,9 @@ Dynamic inventories in Ansible allow you to source your inventory data from exte
 - **Access**: SSH access to the target server with sudo privileges
   
 2. Ensure the following files are present:
+    - `aws_ec2`: This aws_ec2.yml file is an Ansible dynamic inventory configuration that uses the `aws_ec2` plugin to automatically discover EC2 instances in AWS based on specific filters to manage them without needing to manually update the inventory list.
    - `ansible.cfg`: put the paths for the dynamic inventory file and the keypair file
-   - `aws_ec2`: This aws_ec2.yml file is an Ansible dynamic inventory configuration that uses the aws_ec2 plugin to automatically discover EC2 instances in AWS based on specific filters to manage them without needing to manually update the inventory list.
-   - `docker-main`: file to install Docker on target machine
-     *copy contents of this file to roles/docker/tasks/main.yaml*
-   - `oc-main`: file to install OpenShift CLI on target machine
-     *copy contents of this file to roles/oc/tasks/main.yaml*
-   - `playbook10.yaml`
-
+   - `playbook.yaml`: This playbook file is an Ansible playbook used to install Apache on EC2 instances with the tag Name=Ansible  
 
 ## **Steps:**
 
