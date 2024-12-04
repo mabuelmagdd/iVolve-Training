@@ -17,9 +17,11 @@ Before running this lab, ensure you have the following:
 
 ## *Steps:*
 
-### 1. Create script that loops over the range from 0 to 255 to ping every server in subnet 
-
-
+### 1. Create roles directory
+  ```
+  mkdir roles
+  cd roles
+  ```
 ### 2. Change file permissions and run file
 
 
