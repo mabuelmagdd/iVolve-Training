@@ -15,7 +15,7 @@ Before running this lab, ensure you have the following:
 - **Target Server**: Remote or local machine with Ubuntu 24.04 installed
 - **Access**: SSH access to the target server with sudo privileges
 
-## *Steps:*
+## **Steps:**
 
 ### 1. Create roles directory
   ```
@@ -28,7 +28,7 @@ Before running this lab, ensure you have the following:
  ansible-galaxy init docker
  ansible-galaxy init oc
   ```
-### 3. Result
+### 3. Structure of roles after running `tree` command 
 
 
 
