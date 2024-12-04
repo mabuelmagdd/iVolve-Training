@@ -7,9 +7,9 @@
 Dynamic inventories in Ansible allow you to source your inventory data from external systems dynamically. This can be from cloud providers, databases, or any system that can output JSON formatted to Ansible’s specifications.
 
 **Why Use Dynamic Inventories?**
-  •	Scalability: Automatically adapts to changes in your infrastructure.
-  •	Accuracy: Ensures that your playbooks use the most current server information.
-  •	Flexibility: Easily integrates with cloud providers and other dynamic systems.
+  - Scalability: Automatically adapts to changes in your infrastructure.
+  - Accuracy: Ensures that your playbooks use the most current server information.
+  - Flexibility: Easily integrates with cloud providers and other dynamic systems.
 
 ## **Prerequisites**
 1. Before running this lab, ensure you have the following:
