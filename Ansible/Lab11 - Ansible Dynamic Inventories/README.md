@@ -1,8 +1,8 @@
-# iVolve Technologies - Lab10 - Ansible Roles for Application Deployment
+# iVolve Technologies - Lab11 - Ansible Dynamic Inventories
 
 ## **Objective**
 
-## Organize Ansible playbooks using roles. Create an Ansible role for installing Jenkins, docker, openshift CLI ‘OC’.
+## Set up Ansible dynamic inventories to automatically discover and manage infrastructure. Use Ansible Galaxy role to install Apache.
 **What is role?**
 An Ansible role is a collection of tasks used to configure a host for a specific purpose, such as configuring a service. YAML files with a predefined directory structure are used to define roles. The following directories are found in a role directory structure: defaults, vars, tasks, files, templates, meta, and handlers.
 ## **Prerequisites**
