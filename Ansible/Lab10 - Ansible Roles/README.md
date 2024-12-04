@@ -48,6 +48,17 @@ An Ansible role is a collection of tasks used to configure a host for a specific
   ```
   ansible-playbook playbook10
   ```
+#### 5. On the target machine, test that services are installed and actively running 
+  ```
+  sudo systemctl status jenkins
+  sudo systemctl status docker
+  oc version
+  ```
+![image](https://github.com/user-attachments/assets/e9b82ce7-f3d9-4441-bff9-312d572f012b)
+
+![image](https://github.com/user-attachments/assets/f51cb4f7-2d3f-40c2-9a9a-f9951e1d4ade)
+
+![image](https://github.com/user-attachments/assets/def48875-0e5a-4065-afe2-724c8ced95b9)
 
 
 
