@@ -1,0 +1,6 @@
+---
+- name: Install Apache
+  hosts: tag__Ansible
+  become: yes
+  roles:
+    - geerlingguy.apache
