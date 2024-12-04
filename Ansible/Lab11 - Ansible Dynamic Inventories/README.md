@@ -2,9 +2,14 @@
 
 ## **Objective**
 
-## Set up Ansible dynamic inventories to automatically discover and manage infrastructure. Use Ansible Galaxy role to install Apache.
-**What is role?**
-An Ansible role is a collection of tasks used to configure a host for a specific purpose, such as configuring a service. YAML files with a predefined directory structure are used to define roles. The following directories are found in a role directory structure: defaults, vars, tasks, files, templates, meta, and handlers.
+### Set up Ansible dynamic inventories to automatically discover and manage infrastructure. Use Ansible Galaxy role to install Apache.
+**What is a Dynamic Inventory?**
+Dynamic inventories in Ansible allow you to source your inventory data from external systems dynamically. This can be from cloud providers, databases, or any system that can output JSON formatted to Ansible’s specifications.
+**Why Use Dynamic Inventories?**
+  •	Scalability: Automatically adapts to changes in your infrastructure.
+  •	Accuracy: Ensures that your playbooks use the most current server information.
+  •	Flexibility: Easily integrates with cloud providers and other dynamic systems.
+
 ## **Prerequisites**
 1. Before running this lab, ensure you have the following:
 - **Operating System**: Ubuntu 24.04
@@ -12,7 +17,16 @@ An Ansible role is a collection of tasks used to configure a host for a specific
   ```
   sudo apt install ansible -y
   ```
+- **AWS CLI**
+  ```
+  sudo snap install aws-cli --classic
+  ```
+- **boto3**
+  ```
+  sudo apt install python3-boto3
+  ```
 - **Target Server**: Remote or local machine with Ubuntu 24.04 installed
+- **Access Keys**: Save access and secret access keys to be used to connect to aws account 
 - **Access**: SSH access to the target server with sudo privileges
   
 2. Ensure the following files are present:
