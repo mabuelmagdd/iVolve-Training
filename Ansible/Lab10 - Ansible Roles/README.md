@@ -6,7 +6,7 @@
 **What is role?**
 An Ansible role is a collection of tasks used to configure a host for a specific purpose, such as configuring a service. YAML files with a predefined directory structure are used to define roles. The following directories are found in a role directory structure: defaults, vars, tasks, files, templates, meta, and handlers.
 ## **Prerequisites**
-Before running this lab, ensure you have the following:
+1. Before running this lab, ensure you have the following:
 - **Operating System**: Ubuntu 24.04
 - **Ansible Version**: 2.9 or higher
   ```
@@ -14,6 +14,13 @@ Before running this lab, ensure you have the following:
   ```
 - **Target Server**: Remote or local machine with Ubuntu 24.04 installed
 - **Access**: SSH access to the target server with sudo privileges
+  
+2. Ensure the following files are present:
+   - `inventory`: make sure the inventory 
+   - `ansible.cfg`:
+   - `playbook10.yaml`:
+   
+  
 
 ## **Steps:**
 
@@ -28,59 +35,7 @@ Before running this lab, ensure you have the following:
  ansible-galaxy init docker
  ansible-galaxy init oc
   ```
-#### 3. Structure of roles after running `tree` command 
-roles
-├── docker
-│   ├── defaults
-│   │   └── main.yml
-│   ├── files
-│   ├── handlers
-│   │   └── main.yml
-│   ├── meta
-│   │   └── main.yml
-│   ├── README.md
-│   ├── tasks
-│   │   └── main.yml
-│   ├── templates
-│   ├── tests
-│   │   ├── inventory
-│   │   └── test.yml
-│   └── vars
-│       └── main.yml
-├── jenkins
-│   ├── defaults
-│   │   └── main.yml
-│   ├── files
-│   ├── handlers
-│   │   └── main.yml
-│   ├── meta
-│   │   └── main.yml
-│   ├── README.md
-│   ├── tasks
-│   │   └── main.yml
-│   ├── templates
-│   ├── tests
-│   │   ├── inventory
-│   │   └── test.yml
-│   └── vars
-│       └── main.yml
-└── oc
-    ├── defaults
-    │   └── main.yml
-    ├── files
-    ├── handlers
-    │   └── main.yml
-    ├── meta
-    │   └── main.yml
-    ├── README.md
-    ├── tasks
-    │   └── main.yml
-    ├── templates
-    ├── tests
-    │   ├── inventory
-    │   └── test.yml
-    └── vars
-        └── main.yml
+#### 3. 
 
 
 
