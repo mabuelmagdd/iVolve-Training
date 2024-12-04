@@ -27,7 +27,7 @@ Dynamic inventories in Ansible allow you to source your inventory data from exte
   ```
   sudo apt install python3-boto3
   ```
-- **Use Ansible Galaxy role to install Apache **
+- **Use Ansible Galaxy role to install Apache**
   ```
   ansible-galaxy install geerlingguy.apache
   ```
@@ -36,10 +36,8 @@ Dynamic inventories in Ansible allow you to source your inventory data from exte
 - **Access**: SSH access to the target server with sudo privileges
   
 2. Ensure the following files are present:
-   - `inventory`: make sure the inventory has the public DNS of the instance
-   - `ansible.cfg`: put the paths for the inventory file, keypair file, and roles directory
-   - `jenkins-main`: file to install Jenkins on target machine
-     *copy contents of this file to roles/jenkins/tasks/main.yaml*
+   - `ansible.cfg`: put the paths for the dynamic inventory file and the keypair file
+   - `aws_ec2`: This aws_ec2.yml file is an Ansible dynamic inventory configuration that uses the aws_ec2 plugin to automatically discover EC2 instances in AWS based on specific filters to manage them without needing to manually update the inventory list.
    - `docker-main`: file to install Docker on target machine
      *copy contents of this file to roles/docker/tasks/main.yaml*
    - `oc-main`: file to install OpenShift CLI on target machine
