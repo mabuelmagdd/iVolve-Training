@@ -1,10 +1,21 @@
-# iVolve Technologies - Lab2 - Shell Scripting Basics 2
+# iVolve Technologies - Lab10 - Ansible Roles for Application Deployment
 
-## Objective
+## **Objective**
 
-###  Create a shell script to ping every server in the 172.16.17.x subnet (where x is a number between 0 and 255). If the ping succeeds, display the message “Server 172.16.17.x is up and running” If the ping fails, display the message “Server 172.16.17.x is unreachable”. 
+## Organize Ansible playbooks using roles. Create an Ansible role for installing Jenkins, docker, openshift CLI ‘OC’.
+**What is role?**
+An Ansible role is a collection of tasks used to configure a host for a specific purpose, such as configuring a service. YAML files with a predefined directory structure are used to define roles. The following directories are found in a role directory structure: defaults, vars, tasks, files, templates, meta, and handlers.
+## **Prerequisites**
+Before running this lab, ensure you have the following:
+- **Operating System**: Ubuntu 24.04
+- **Ansible Version**: 2.9 or higher
+  ```
+  sudo apt install ansible -y
+  ```
+- **Target Server**: Remote or local machine with Ubuntu 24.04 installed
+- **Access**: SSH access to the target server with sudo privileges
 
-## Steps:
+## *Steps:*
 
 ### 1. Create script that loops over the range from 0 to 255 to ping every server in subnet 
 
