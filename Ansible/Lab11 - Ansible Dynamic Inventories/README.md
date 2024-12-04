@@ -71,7 +71,12 @@ keyed_groups:
     prefix: 'tag_'
   ```
 #### 4. Create `ansible.cfg` 
- Add the paths to the inventory and the keypair files.
+   ```
+ [defaults]
+inventory = aws_ec2.yml
+remote_user = ubuntu
+private_key_file = /home/ubuntu/Downloads/ubuntukey.pem
+  ```
 #### 5. Test and display the correctness of your dynamic inventory configuration 
   ```
   ansible-inventory --list
@@ -80,7 +85,17 @@ keyed_groups:
   ```
  ansible-inventory -i <inventoryfile> --graph
   ```
-#### 7. Run playbook
+#### 7. Create playbook
+  ```
+ ---
+- name: Install Apache
+  hosts: tag__Ansible
+  become: yes
+  roles:
+    - geerlingguy.apache
+
+  ```
+#### 8. Run playbook
   ```
  ansible-playbook playbook.yaml
   ```
