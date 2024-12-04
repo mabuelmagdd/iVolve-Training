@@ -17,18 +17,18 @@ Before running this lab, ensure you have the following:
 
 ## **Steps:**
 
-### 1. Create roles directory
+#### 1. Create roles directory
   ```
   mkdir roles
   cd roles
   ```
-### 2. Create roles using `ansible-galaxy`
+#### 2. Create roles using `ansible-galaxy`
   ```
  ansible-galaxy init jenkins
  ansible-galaxy init docker
  ansible-galaxy init oc
   ```
-### 3. Structure of roles after running `tree` command 
+#### 3. Structure of roles after running `tree` command 
 
 
 
