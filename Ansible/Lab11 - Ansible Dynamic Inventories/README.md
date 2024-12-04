@@ -36,17 +36,18 @@ Dynamic inventories in Ansible allow you to source your inventory data from exte
 - **Access**: SSH access to the target server with sudo privileges
   
 2. Ensure the following files are present:
-    - `aws_ec2`: This aws_ec2.yml file is an Ansible dynamic inventory configuration that uses the `aws_ec2` plugin to automatically discover EC2 instances in AWS based on specific filters to manage them without needing to manually update the inventory list.
+    - `aws_ec2.yaml`: This is an Ansible dynamic inventory configuration that uses the `aws_ec2` plugin to automatically discover EC2 instances in AWS based on specific filters to manage them without needing to manually update the inventory list.
    - `ansible.cfg`: put the paths for the dynamic inventory file and the keypair file
    - `playbook.yaml`: This playbook file is an Ansible playbook used to install Apache on EC2 instances with the tag Name=Ansible  
 
 ## **Steps:**
 
-#### 1. Create roles directory
+#### 1. Set up your AWS CLI with your credentials and configuration
   ```
-  mkdir roles
-  cd roles
+  aws configure
   ```
+  This allows you to interact with AWS services from the command line without needing to manually input credentials each time.
+  
 #### 2. Create roles using `ansible-galaxy`
   ```
  ansible-galaxy init jenkins
