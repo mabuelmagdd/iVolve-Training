@@ -22,7 +22,7 @@ Before running this lab, ensure you have the following:
   mkdir roles
   cd roles
   ```
-### 2. Change file permissions and run file
+### 2. Change roles usinng `ansible-galaxy`
 
 
 ### 3. Result
