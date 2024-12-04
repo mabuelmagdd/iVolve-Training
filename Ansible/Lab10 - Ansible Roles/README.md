@@ -22,9 +22,12 @@ Before running this lab, ensure you have the following:
   mkdir roles
   cd roles
   ```
-### 2. Change roles usinng `ansible-galaxy`
-
-
+### 2. Create roles using `ansible-galaxy`
+  ```
+ ansible-galaxy init jenkins
+ ansible-galaxy init docker
+ ansible-galaxy init oc
+  ```
 ### 3. Result
 
 
