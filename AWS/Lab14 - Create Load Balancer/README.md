@@ -40,36 +40,70 @@ sudo systemctl start nginx
 sudo systemctl enable nginx
 
 ```
-Test the instance by openeing the public ip in a new browser.
+Test the instance by opening the public ip in a new browser.
+
 ![image](https://github.com/user-attachments/assets/14bcbfd6-ac80-4004-a2df-30d5b84b8cc3)
 
-#### 6. Create the EC2 instance that will act as the Bastion host 
+#### 6. Create Apache instance
 Add name > Use Ubuntu AMI > Create a key pair and save the .pem file.
-Edit the Network Settings: add the vpc that we created> choose the public subnet we created > create a new security group that allows SSH from anywhere.
-![image](https://github.com/user-attachments/assets/3f5fef3b-8d32-4334-8624-ac3e731eae57)
+Edit the Network Settings: add the vpc that we created> choose the public subnet we created for apache > create a new security group that allows HTTP requests from anywhere.
+![image](https://github.com/user-attachments/assets/db37da81-cf8e-402e-9aad-703355aac630)
 
-#### 7. Create the EC2 instance that will act as the private one 
-Add name > Use Ubuntu AMI > Create a key pair and save the .pem file.
-Edit the Network Settings: add the vpc that we created> choose the private subnet we created > create a new security group that **allows SSH from bastion host only by specifying the security group of the bastion host in the inbound rule.**
-![image](https://github.com/user-attachments/assets/5db7f68e-8b15-4d78-98b2-05db62e69a7e)
+Add these commands to user data
+```
+#!/bin/bash
+# Update the package list
+apt update -y
+apt install -y apache2
+systemctl start apache2
+systemctl enable apache2
 
-#### 8. Connect to the bastion host 
 ```
-chmod 400 <path-to-.pem-file-of-bastion-host>
-ssh -i <path-to-.pem-file-of-bastion-host> ubuntu@<ip-of-bastion-host>
-```
-![image](https://github.com/user-attachments/assets/c6a2e014-4ae7-499d-aa3e-9aec920b846c)
+Test the instance by opening the public ip in a new browser.
 
-#### 9. Connect to the private instance through the bastion host
-##### 9.1 Open a new terminal and copy the .pem file of the private machine to the bastion host 
-This command copies the private key from local machine to the Bastion host at the path /home/ubuntu/.ssh/ using SSH for secure transfer. The -i flag ensures the private key on local machine is used for authentication.
-```
-scp -i <path-to-.pem-file-of-private-instance> <path-to-.pem-file-of-bastion-host> ubuntu@<ip-of-bastion-host>:/home/ubuntu/.ssh/
-```
-##### 9.2 SSH to the private machine 
-```
-ssh -i <path-to-.pem-file-of-private-instance> ubuntu@<ip-of-private-instance>
-```
-![image](https://github.com/user-attachments/assets/6b4918ca-a8ba-4dda-87ed-9f9b26b04558)
+![image](https://github.com/user-attachments/assets/65623118-01f4-49e9-829a-a09508b543a9)
+
+#### 7. Create the target group 
+A Target Group is a logical grouping of targets (such as EC2 instances, IP addresses, or Lambda functions) that can receive traffic routed by a Load Balancer. It is a core component of the Elastic Load Balancer (ELB) service and helps manage traffic distribution.
+
+Register both the apache and nginx instances 
+![image](https://github.com/user-attachments/assets/8e6bbb22-226f-44ca-b80d-ebb083f4daff)
+
+#### 8. Create the Load Balancer
+1. Choose the type to be Application Load Balancer
+2. Choose the VPC created
+3. Choose the 2 AZs that contain both subnets
+4. Specify the target group that targets the apache and nginx instances
+![image](https://github.com/user-attachments/assets/244d2a0f-c14c-40d9-9856-2c97a61f2ca1)
+
+#### 9. Load Balancer Test: Alternating Traffic Between Apache and Nginx
+This test demonstrates the functionality of the configured Load Balancer (LB) in distributing incoming traffic alternately between two backend servers running Apache and Nginx.
+1. **Retrieve the DNS of the Load Balancer**:
+   - After deploying the Load Balancer, obtain its public DNS (e.g., `http://<LB-DNS>`).
+
+2. **Access the Load Balancer in a Web Browser**:
+   - Open any web browser and paste the Load Balancer's DNS into the address bar. Press **Enter** to load the page.
+
+3. **Observe the Server Responses**:
+   - Each time the page loads, the Load Balancer alternates traffic between the Apache and Nginx servers.
+   - On the first refresh, you may see the response from the **Apache server** (e.g., "Welcome to Apache").
+   - On the next refresh, you may see the response from the **Nginx server** (e.g., "Welcome to Nginx").
+
+4. **Repeat the Process**:
+   - Continue refreshing the browser to observe the round-robin traffic distribution.
+
+**Expected Outcome**
+
+- The Load Balancer ensures that traffic is evenly distributed between the Apache and Nginx servers.
+- This confirms that the Load Balancer is functioning correctly and adhering to the round-robin load-balancing algorithm.
+
+**Troubleshooting**
+
+- If the responses do not alternate:
+  - Verify the health of the backend servers.
+  - Check the Target Group and Load Balancer configurations in AWS.
+
+![image](https://github.com/user-attachments/assets/33f37fbe-9abb-42e2-a411-2541bdd59a99)
+![image](https://github.com/user-attachments/assets/d1f13727-d790-470f-be8f-29917f42678a)
 
 
