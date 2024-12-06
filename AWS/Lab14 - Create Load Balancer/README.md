@@ -1,11 +1,10 @@
-# iVolve Technologies - Lab 13 - Launching an EC2 Instance
+# iVolve Technologies - Lab 14 - Create AWS Load Balancer
 
 ## **Objective**
 
-####   Create a VPC with public and private subnets and 1 EC2 in each subnet, configure private EC2 security group to only allow inbound SSH from public EC2 IP, SSH to the private instance using bastion host
+####   Create VPC with 2 public subnets, launch 2 EC2s with Nginx and Apache installed using user data, create and configure a Load Balancer to access the 2 Web servers.
 
-
-![image](https://github.com/user-attachments/assets/8bcaf5fa-2bc8-406f-a54f-1a49db18ffee)
+![image](https://github.com/user-attachments/assets/25d0ee0a-2bde-4302-8a58-00b41169b896)
 
 **Resource Map for the network**
 ![image](https://github.com/user-attachments/assets/0820b598-a768-447f-8317-74f872d32970)
