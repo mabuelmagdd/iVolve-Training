@@ -7,6 +7,7 @@
 ![image](https://github.com/user-attachments/assets/25d0ee0a-2bde-4302-8a58-00b41169b896)
 
 **Resource Map for the network**
+
 ![image](https://github.com/user-attachments/assets/8cea142c-7a53-4e5d-bf09-dbeb2a317b9e)
 
 ## **Steps:**
