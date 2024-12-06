@@ -4,6 +4,7 @@
 
 ####   Create a VPC with public and private subnets and 1 EC2 in each subnet, configure private EC2 security group to only allow inbound SSH from public EC2 IP, SSH to the private instance using bastion host
 
+
 ![image](https://github.com/user-attachments/assets/8bcaf5fa-2bc8-406f-a54f-1a49db18ffee)
 
 ## **Steps:**
