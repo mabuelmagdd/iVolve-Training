@@ -7,31 +7,41 @@
 ![image](https://github.com/user-attachments/assets/25d0ee0a-2bde-4302-8a58-00b41169b896)
 
 **Resource Map for the network**
-![image](https://github.com/user-attachments/assets/0820b598-a768-447f-8317-74f872d32970)
+![image](https://github.com/user-attachments/assets/8cea142c-7a53-4e5d-bf09-dbeb2a317b9e)
 
 ## **Steps:**
 
 #### 1. Create VPC with CIDR `10.0.0.0/16`
-![image](https://github.com/user-attachments/assets/c2f422f5-c29e-4fb7-8421-506a4312a8bf)
+![image](https://github.com/user-attachments/assets/0361efb8-0a41-4805-b237-6e7d4b6081d7)
 
 #### 2. Create the 2 subnets 
-The public subnet with CIDR `10.0.1.0/24`and the private subnet with CIDR `10.0.2.0/24`.
-![image](https://github.com/user-attachments/assets/9b559f9f-21cf-44f4-9c3e-40ee8797523b)
+The public subnet with CIDR `10.0.1.0/24` and AZ `us-east-1a` and the other public subnet with CIDR `10.0.2.0/24` and AZ `us-east-1b`
+![image](https://github.com/user-attachments/assets/83070104-6eb9-4fe9-8b5a-9fce7a61d2b3)
 
 #### 3. Create Internet Gateway
-![image](https://github.com/user-attachments/assets/e57d98b3-d0fb-499a-b664-5b634351def2)
+![image](https://github.com/user-attachments/assets/dfb80a33-64cf-489a-8715-e9fdbe96b52f)
 
 #### 4. Create public route table 
 Add IGW as a target to the route table from `0.0.0.0/0` to connect to the internet.
-![image](https://github.com/user-attachments/assets/a8b2d66d-4d45-4033-98da-a3af5de306fe)
-Associate the public subnet with this route table by adding this subnet in the subnet association tab.
-![image](https://github.com/user-attachments/assets/4a5278f9-9b82-4991-83af-3497db810d32)
+Associate the 2 public subnets with this route table.
+![image](https://github.com/user-attachments/assets/9f1c353c-8325-48bc-aa8a-7538d87a4ef9)
 
-#### 5. Create private route table 
-Don't add a route to the internet.
-![image](https://github.com/user-attachments/assets/cf8f4d5e-b11d-4da5-85ba-407b281c9b4c)
-Associate the private subnet with this route table by adding this subnet in the subnet association tab.
-![image](https://github.com/user-attachments/assets/50040dcf-a9c7-4ebb-a7f1-a7eef82579b2)
+#### 5. Create NGINX instance
+Add name > Use Ubuntu AMI > Create a key pair and save the .pem file.
+Edit the Network Settings: add the vpc that we created> choose the public subnet we created for nginx > create a new security group that allows HTTP requests from anywhere.
+![image](https://github.com/user-attachments/assets/aa6decd6-5b84-4a91-a72a-508b9f9c01c1)
+Add these commands to user data
+```
+#!/bin/bash
+# Update the system
+sudo yum update -y
+sudo yum install -y nginx
+sudo systemctl start nginx
+sudo systemctl enable nginx
+
+```
+Test the instance by openeing the public ip in a new browser.
+![image](https://github.com/user-attachments/assets/14bcbfd6-ac80-4004-a2df-30d5b84b8cc3)
 
 #### 6. Create the EC2 instance that will act as the Bastion host 
 Add name > Use Ubuntu AMI > Create a key pair and save the .pem file.
