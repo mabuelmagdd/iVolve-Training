@@ -1,104 +1,51 @@
-# iVolve Technologies - Lab11 - Ansible Dynamic Inventories
+# iVolve Technologies - Lab12 - AWS Security
 
 ## **Objective**
 
-### Set up Ansible dynamic inventories to automatically discover and manage infrastructure. Use Ansible Galaxy role to install Apache.
-
-**What is a Dynamic Inventory?**
-Dynamic inventories in Ansible allow you to source your inventory data from external systems dynamically. This can be from cloud providers, databases, or any system that can output JSON formatted to Ansible’s specifications.
-
-**Why Use Dynamic Inventories?**
-  - Scalability: Automatically adapts to changes in your infrastructure.
-  - Accuracy: Ensures that your playbooks use the most current server information.
-  - Flexibility: Easily integrates with cloud providers and other dynamic systems.
-
-## **Prerequisites**
-1. Before running this lab, ensure you have the following:
-- **Operating System**: Ubuntu 24.04
-- **Install Ansible**: 2.9 or higher
-  ```
-  sudo apt install ansible -y
-  ```
-- **Install AWS CLI**
-  ```
-  sudo snap install aws-cli --classic
-  ```
-- **Install boto3**
-  ```
-  sudo apt install python3-boto3
-  ```
-- **Use Ansible Galaxy role to install Apache**
-  ```
-  ansible-galaxy install geerlingguy.apache
-  ```
-- **Target Server**: Remote or local machine with Ubuntu 24.04 installed
-- **Access Keys**: Save access and secret access keys to be used to connect to aws account 
-- **Access**: SSH access to the target server with sudo privileges
-  
-2. Ensure the following files are present:
-    - `aws_ec2.yaml`: This is an Ansible dynamic inventory configuration that uses the `aws_ec2` plugin to automatically discover EC2 instances in AWS based on specific filters to manage them without needing to manually update the inventory list.
-   - `ansible.cfg`: put the paths for the dynamic inventory file and the keypair file
-   - `playbook.yaml`: This playbook file is an Ansible playbook used to install Apache on EC2 instances with the tag Name=Ansible  
+####  Create AWS account, set billing alarm, create 2 IAM groups (admin-developer), admin group has admin permissions, developer group only access to ec2,  create admin-1 user with console access only and enable MFA & admin-2-prog user with cli access only and list all users and groups using commands, create dev-user with programmatic and console access and try to access EC2 and S3 from dev user.
 
 ## **Steps:**
 
-#### 1. Add tag so that you can filter out the targeted instances that will be in the inventory on the EC2 instance 
-![image](https://github.com/user-attachments/assets/db39bfc5-ea96-4503-93bf-fb98f2ae93f7)
+#### 1. Set billing alarm
+##### 1.1 Make sure Cloud Watch Billing alerts are enabled from  
+`Billing and cost Management > Billing Preferences` By Alert preferences choose Edit>
+Choose Receive CloudWatch Billing Alerts > Choose Save preferences.
+![image](https://github.com/user-attachments/assets/9d11eda8-c989-4571-912a-555b24ae7113)
 
-#### 2. On EC2 instance create a keypair .PEM file and ACCESS Keys
-#### 3. Change the .PEM file permisions on management node 
- ```
-  chmod 400 <path-to-pem-file>
-  ```
-#### 2. Set up your AWS CLI with your credentials and configuration
-  ```
-  aws configure
-  ```
-  It prompts you to enter your `AWS Access Key ID`, `Secret Access Key`, `default region`, and `output format`. This allows you to interact with AWS services from the command line without needing to manually input credentials each time.
-  
-#### 3. Create dynamic inventory
-  ```
- --- 
-plugin: aws_ec2
-regions:
-  - us-east-1
-filters:
-  # this selects only running instances with tag Name of value Ansible
-  "tag:Name": "Ansible"
-  "instance-state-name": "running"
-keyed_groups:
-  - key: tags.Name
-    prefix: 'tag_'
-  ```
-#### 4. Create `ansible.cfg` 
-   ```
- [defaults]
-inventory = aws_ec2.yml
-remote_user = ubuntu
-private_key_file = /home/ubuntu/Downloads/ubuntukey.pem
-  ```
-#### 5. Test and display the correctness of your dynamic inventory configuration 
-  ```
-  ansible-inventory --list
-  ```
-#### 6. Test and visualize the relationships and groupings of hosts within the inventory 
-  ```
- ansible-inventory -i <inventoryfile> --graph
-  ```
-#### 7. Create playbook
-  ```
- ---
-- name: Install Apache
-  hosts: tag__Ansible
-  become: yes
-  roles:
-    - geerlingguy.apache
+##### 1.2 Create Alarm: `CloudWatch > All Alarms > Create ALarm`
+![image](https://github.com/user-attachments/assets/5e919770-88d9-443d-8e99-3cdf25f66af4)
+![image](https://github.com/user-attachments/assets/7cf4eaa0-b44d-4b7f-b22d-ce11de0730d2)
+Specify an Amazon SNS topic to be notified when your alarm is in the ALARM state. The Amazon SNS topic can include your email address so that you recieve email when the billing amount crosses the threshold that you specified.
+![image](https://github.com/user-attachments/assets/18852878-18e8-44af-80c6-af65d726510b)
+**Result:**
+![image](https://github.com/user-attachments/assets/14d201c0-57ed-43b4-9577-b4e3fa7c1e20)
 
-  ```
-#### 8. Run playbook
-  ```
- ansible-playbook playbook.yaml
-  ```
+#### 2. Create `admin` group with the required permissions
+![image](https://github.com/user-attachments/assets/01b881fe-2838-4ef9-ae0a-06fbc6ea3d03)
+
+#### 3. Create `developer` group with the required permissions 
+![image](https://github.com/user-attachments/assets/2f291c41-f64a-4eed-9a1b-3ddd54ef4195)
+![image](https://github.com/user-attachments/assets/2b2a3c8d-8c17-49a0-b75e-4327e212b253)
+
+#### 4. Create `admin-1` user with MFA
+![image](https://github.com/user-attachments/assets/805447ef-86af-46dc-b443-7194d4bd295b)
+![image](https://github.com/user-attachments/assets/2333c02d-b952-4e60-bd7d-9bf339d97137)
+
+#### 5. Create `admin-2` with disabled control access
+![image](https://github.com/user-attachments/assets/cf5f0277-1d48-4a15-a0e1-4f10f8c46c32)
+
+#### 6. Test by listing users 
+![image](https://github.com/user-attachments/assets/1a65cb2c-2a46-4326-851a-edc1fcccddfb)
+
+#### 7. Test by listing groups
+![image](https://github.com/user-attachments/assets/f2d7277e-5e20-485a-a0de-7e98b253ca43)
+
+#### 8. Create `dev-user`, log in using dev-user, try to access ec2
+![image](https://github.com/user-attachments/assets/238f13d4-597d-4aef-9d2c-547e110c50ca)
+
+#### 9. Test `dev-user` trying to create an s3 bucket 
+![image](https://github.com/user-attachments/assets/3eed9c1e-72d3-46ca-a792-fec4bb16746f)
+
 
 
 
