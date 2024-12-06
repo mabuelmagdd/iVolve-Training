@@ -68,6 +68,7 @@ Test the instance by opening the public ip in a new browser.
 A Target Group is a logical grouping of targets (such as EC2 instances, IP addresses, or Lambda functions) that can receive traffic routed by a Load Balancer. It is a core component of the Elastic Load Balancer (ELB) service and helps manage traffic distribution.
 
 Register both the apache and nginx instances 
+
 ![image](https://github.com/user-attachments/assets/8e6bbb22-226f-44ca-b80d-ebb083f4daff)
 
 #### 8. Create the Load Balancer
