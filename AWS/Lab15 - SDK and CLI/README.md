@@ -1,66 +1,121 @@
-# iVolve Technologies - Lab 13 - Launching an EC2 Instance
+# iVolve Technologies - Lab 15 - SDK and CLI Interactions
 
 ## **Objective**
 
-####   Create a VPC with public and private subnets and 1 EC2 in each subnet, configure private EC2 security group to only allow inbound SSH from public EC2 IP, SSH to the private instance using bastion host
+####  Use the AWS CLI to Create an S3 bucket, configure permissions, and upload/download files to/from the bucket. Enable versioning and logging for the bucket.
 
+![image](https://github.com/user-attachments/assets/7c15e0a0-d644-4363-9c3c-cd7be97b1e70)
 
-![image](https://github.com/user-attachments/assets/8bcaf5fa-2bc8-406f-a54f-1a49db18ffee)
-
-**Resource Map for the network**
-![image](https://github.com/user-attachments/assets/0820b598-a768-447f-8317-74f872d32970)
 
 ## **Steps:**
 
-#### 1. Create VPC with CIDR `10.0.0.0/16`
-![image](https://github.com/user-attachments/assets/c2f422f5-c29e-4fb7-8421-506a4312a8bf)
-
-#### 2. Create the 2 subnets 
-The public subnet with CIDR `10.0.1.0/24`and the private subnet with CIDR `10.0.2.0/24`.
-![image](https://github.com/user-attachments/assets/9b559f9f-21cf-44f4-9c3e-40ee8797523b)
-
-#### 3. Create Internet Gateway
-![image](https://github.com/user-attachments/assets/e57d98b3-d0fb-499a-b664-5b634351def2)
-
-#### 4. Create public route table 
-Add IGW as a target to the route table from `0.0.0.0/0` to connect to the internet.
-![image](https://github.com/user-attachments/assets/a8b2d66d-4d45-4033-98da-a3af5de306fe)
-Associate the public subnet with this route table by adding this subnet in the subnet association tab.
-![image](https://github.com/user-attachments/assets/4a5278f9-9b82-4991-83af-3497db810d32)
-
-#### 5. Create private route table 
-Don't add a route to the internet.
-![image](https://github.com/user-attachments/assets/cf8f4d5e-b11d-4da5-85ba-407b281c9b4c)
-Associate the private subnet with this route table by adding this subnet in the subnet association tab.
-![image](https://github.com/user-attachments/assets/50040dcf-a9c7-4ebb-a7f1-a7eef82579b2)
-
-#### 6. Create the EC2 instance that will act as the Bastion host 
-Add name > Use Ubuntu AMI > Create a key pair and save the .pem file.
-Edit the Network Settings: add the vpc that we created> choose the public subnet we created > create a new security group that allows SSH from anywhere.
-![image](https://github.com/user-attachments/assets/3f5fef3b-8d32-4334-8624-ac3e731eae57)
-
-#### 7. Create the EC2 instance that will act as the private one 
-Add name > Use Ubuntu AMI > Create a key pair and save the .pem file.
-Edit the Network Settings: add the vpc that we created> choose the private subnet we created > create a new security group that **allows SSH from bastion host only by specifying the security group of the bastion host in the inbound rule.**
-![image](https://github.com/user-attachments/assets/5db7f68e-8b15-4d78-98b2-05db62e69a7e)
-
-#### 8. Connect to the bastion host 
+#### 1. Create S3 bycket
 ```
-chmod 400 <path-to-.pem-file-of-bastion-host>
-ssh -i <path-to-.pem-file-of-bastion-host> ubuntu@<ip-of-bastion-host>
+aws s3api create-bucket --bucket <bucket-name> --region <region>
 ```
-![image](https://github.com/user-attachments/assets/c6a2e014-4ae7-499d-aa3e-9aec920b846c)
+![image](https://github.com/user-attachments/assets/46c89ddf-74fb-4a8e-86ff-a102d88c0f15)
 
-#### 9. Connect to the private instance through the bastion host
-##### 9.1 Open a new terminal and copy the .pem file of the private machine to the bastion host 
-This command copies the private key from local machine to the Bastion host at the path /home/ubuntu/.ssh/ using SSH for secure transfer. The -i flag ensures the private key on local machine is used for authentication.
+Test that it was successfully created 
 ```
-scp -i <path-to-.pem-file-of-private-instance> <path-to-.pem-file-of-bastion-host> ubuntu@<ip-of-bastion-host>:/home/ubuntu/.ssh/
+aws s3 ls
 ```
-##### 9.2 SSH to the private machine 
+![image](https://github.com/user-attachments/assets/519c5237-2250-4159-b26f-aab3890f72ad)
+
+Test from console by openeing the s3 services, the bucket shiould be present
+
+![image](https://github.com/user-attachments/assets/a25f2133-395b-45ac-957d-261a75f4d852)
+
+#### 2. Configure policy  
 ```
-ssh -i <path-to-.pem-file-of-private-instance> ubuntu@<ip-of-private-instance>
+vim policy.json
 ```
-![image](https://github.com/user-attachments/assets/6b4918ca-a8ba-4dda-87ed-9f9b26b04558)
+policy.jason content 
+```
+{
+  "Version": "2012-10-17",
+  "Statement": [
+    {
+      "Effect": "Allow",
+      "Principal": {
+        "AWS": "arn:aws:iam::506231750144:user/maryamabualmagd"
+      },
+      "Action": "s3:GetObject",
+      "Resource": "arn:aws:s3:::m1412-bucket/*"
+    },
+    {
+      "Effect": "Allow",
+      "Principal": {
+        "AWS": "arn:aws:iam::506231750144:user/maryamabualmagd"
+      },
+      "Action": "s3:PutObject",
+      "Resource": "arn:aws:s3:::m1412-bucket/*"
+    }
+  ]
+}
+
+```
+Set the policy then test if it was applied 
+```
+aws s3api put-bucket-policy --bucket <bucketname> --policy file://policy.json
+aws s3api get-bucket-policy --bucket <bucketname>
+```
+![image](https://github.com/user-attachments/assets/4b23d8b6-e52f-4bec-9b6d-157981599bad)
+
+#### 3. Put object
+```
+echo "hello" | aws s3 cp -s3://<bucketname>/<filename>
+```
+Test if object was put in the bucket 
+```
+ aws s3 ls s3://<bucketname>
+```
+![image](https://github.com/user-attachments/assets/59216aa2-56e5-4ad4-808d-fca5ac439120)
+
+#### 4. Enable versioning 
+```
+aws s3api put-bucket-versioning --bucket <bucketname> --versioning-configuration Status=Enabled
+```
+Test if it is enabled
+```
+aws s3api get-bucket-versioning --bucket <bucketname> 
+```
+![image](https://github.com/user-attachments/assets/3d79ed33-f37e-4117-a716-0181c9287cb1)
+
+#### 5. Enable logging 
+
+**Enable Logging:** provides detailed records about requests made to a bucket. When logging is enabled for an S3 bucket, S3 automatically generates log files containing information about requests to the bucket.
+
+**Edit policy.json to allow logging:** The AWS S3 service needs permission to write logs to your target bucket. By default, only the bucket owner has full permissions, and you need to explicitly grant access to logging.s3.amazonaws.com, which is the AWS service that will be generating the log files.
+```
+{
+  "Version": "2012-10-17",
+  "Statement": [
+    {
+      "Sid": "S3ServerAccessLogsPolicy",
+      "Effect": "Allow",
+      "Principal": {
+        "Service": "logging.s3.amazonaws.com"
+      },
+    }
+  ]
+}
+
+```
+`logging.json`
+```
+{
+     "LoggingEnabled": {
+         "TargetBucket": "m1412-bucket",
+         "TargetPrefix": "Logs/"
+     }
+ }
+
+```
+Enable logging and test 
+```
+aws s3api put-bucket-logging --bucket <bucketname> --bucket-logging-status file://logging.json
+```
+![image](https://github.com/user-attachments/assets/37a28f17-5123-422b-a200-d57cb8164cc8)
+
 
 
