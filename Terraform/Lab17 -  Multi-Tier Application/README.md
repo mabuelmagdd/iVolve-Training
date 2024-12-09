@@ -4,7 +4,7 @@
 
 ### Create ‘ivolve’ VPC manually in AWS and use Data block to get VPC id in your configuration file. Use Terraform to define and deploy a multi-tier architecture including 2 subnets, EC2, and RDS database. Use local provisioner to write the EC2 IP in a file called ec2-ip.txt.
 
-![image](https://github.com/user-attachments/assets/879e55e5-b3f8-4a51-9fd4-5499e85de7cf)
+          ![image](https://github.com/user-attachments/assets/879e55e5-b3f8-4a51-9fd4-5499e85de7cf)
 
 ### **File Structure**
 
