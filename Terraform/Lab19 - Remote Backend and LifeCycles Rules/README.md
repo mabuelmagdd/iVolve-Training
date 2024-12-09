@@ -1,4 +1,4 @@
-# Lab 19 - Remote Backend and LifeCycles Rules
+# Lab 19 - Remote Backend and LifeCycle Rules
 
 ## **Objective**
 
