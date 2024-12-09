@@ -4,7 +4,7 @@
 
 ###  Implement the below diagram with Terraform. Store state file in remote backend. Use create_before_destroy Lifecycle on the EC2 and verify it. Compare between different Lifecycles Rules.
 
-![image](https://github.com/user-attachments/assets/dea77ae4-2835-47e1-aca0-7e23055011dd)
+![image](https://github.com/user-attachments/assets/f372152b-1410-4347-b573-154defcc194b)
 
 ### **File Structure**
 
@@ -44,7 +44,7 @@ terraform plan
 ```
 #### 3. Apply the configuration
 ```
-instanceterraform apply
+terraform apply
 ```
 #### 4. Verify the deployed resources from the email for the subscribtion confirmation
 ![image](https://github.com/user-attachments/assets/6d1fda71-9a23-4a2a-8239-1aa1e43a375e)
