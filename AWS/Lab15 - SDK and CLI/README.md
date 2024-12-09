@@ -37,7 +37,7 @@ policy.jason content
     {
       "Effect": "Allow",
       "Principal": {
-        "AWS": "arn:aws:iam::506231750144:user/maryamabualmagd"
+        "AWS": "arn:aws:iam::<accountid>:user/<userid>"
       },
       "Action": "s3:GetObject",
       "Resource": "arn:aws:s3:::m1412-bucket/*"
@@ -45,7 +45,7 @@ policy.jason content
     {
       "Effect": "Allow",
       "Principal": {
-        "AWS": "arn:aws:iam::506231750144:user/maryamabualmagd"
+        "AWS": "arn:aws:iam::<accountid>:user/<userid>"
       },
       "Action": "s3:PutObject",
       "Resource": "arn:aws:s3:::m1412-bucket/*"
