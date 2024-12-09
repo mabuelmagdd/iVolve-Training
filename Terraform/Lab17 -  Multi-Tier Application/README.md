@@ -1,10 +1,9 @@
 # Lab 17 - Multi-Tier Application Deployment with Terraform
 
-#### **Objective**
+### **Objective**
 
-#### - Create ‘ivolve’ VPC manually in AWS and use Data block to get VPC id in your configuration file. 
-#### -  Use Terraform to define and deploy a multi-tier architecture including 2 subnets, EC2, and RDS database. 
-#### - Use local provisioner to write the EC2 IP in a file called ec2-ip.txt.
+### - Create ‘ivolve’ VPC manually in AWS and use Data block to get VPC id in your configuration file. -  Use Terraform to define and deploy a multi-tier architecture including 2 subnets, EC2, and RDS database. - Use local provisioner to write the EC2 IP in a file called ec2-ip.txt.
+
 ![image](https://github.com/user-attachments/assets/879e55e5-b3f8-4a51-9fd4-5499e85de7cf)
 
 #### **File Structure**
@@ -48,14 +47,18 @@ instanceterraform apply
 ```
 #### 6. Verify the deployed resources in the AWS Management Console 
 Network Resouce Map
+
 ![image](https://github.com/user-attachments/assets/3a33cc69-28c0-4985-b3b3-ec225c2c5db1)
 
 Instance
+
 ![image](https://github.com/user-attachments/assets/e161f4ad-2917-4fcf-a695-a6149d360313)
 
 Security group of the instance 
+
 ![image](https://github.com/user-attachments/assets/0fb445ae-1cda-43e7-b391-2fa0471913c1)
 
 RDS 
+
 ![image](https://github.com/user-attachments/assets/9cd92bde-3033-453f-82fc-1b243e0136a7)
 
