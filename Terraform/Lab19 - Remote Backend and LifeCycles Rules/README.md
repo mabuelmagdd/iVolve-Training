@@ -1,66 +1,50 @@
-# Lab 17 - Multi-Tier Application Deployment with Terraform
+# Lab 19 - Remote Backend and LifeCycles Rules
 
 ## **Objective**
 
-### Create ‘ivolve’ VPC manually in AWS and use Data block to get VPC id in your configuration file. Use Terraform to define and deploy a multi-tier architecture including 2 subnets, EC2, and RDS database. Use local provisioner to write the EC2 IP in a file called ec2-ip.txt.
+###  Implement the below diagram with Terraform. Store state file in remote backend. Use create_before_destroy Lifecycle on the EC2 and verify it. Compare between different Lifecycles Rules.
 
-          ![image](https://github.com/user-attachments/assets/879e55e5-b3f8-4a51-9fd4-5499e85de7cf)
+![image](https://github.com/user-attachments/assets/dea77ae4-2835-47e1-aca0-7e23055011dd)
 
 ### **File Structure**
 
 Make sure the following files are present:
-- `main.tf`: Defines the core infrastructure (VPC, subnets, security groups, instances, etc.)
 - `providers.tf`: Specifies provider configuration.
 - `backend.tf`: Configures state management.
+- `variables.tf`: Declares variables.
+- `terraform.tfvars`: Provides variable values.
+- `network.tf`: This file creates a VPC with a public subnet, an internet gateway, and a route table to enable internet access for resources within the subnet.
+- `instance.tf`: This file provisions an EC2 instance using the latest Ubuntu AMI, assigns it a public IP, and secures it with a security group allowing SSH access
+- `sns.tf`: This file creates an SNS topic for CPU alerts and sets up a subscription to send notifications to a specified endpoint using the defined protocol.
+- `cloudwatch.tf`: This file sets up a CloudWatch alarm to monitor CPU utilization for an EC2 instance and triggers notifications via an SNS topic when the alarm state changes.
+
+#### **What is a resource lifecycle?**
+A resource lifecycle in Terraform is a way to control how Terraform manages the creation, update, and destruction of resources. The lifecycle block can be used within a resource definition to define specific behavior for managing the resource's lifecycle. Key arguments include:
+1. `create_before_destroy`:
+   - What it does: Ensures the new resource is created before the old one is destroyed.
+   - Use case: Useful when updating resources (like EC2 instances) to avoid downtime. For example, if you change an instance type, Terraform will create a new instance first before destroying the old one.
+
+2. `prevent_destroy`:
+   - What it does: Prevents the resource from being destroyed.
+   - Use case: Protects critical resources (e.g., a production EC2 instance or database) from accidental deletion. Terraform will throw an error if you try to destroy the resource
+  
+3. `ignore_changes`:
+   - What it does: Tells Terraform to ignore changes to specific attributes of a resource.
+   - Use case: Useful if certain attributes (like tags or user data) are managed outside of Terraform, and you don’t want Terraform to modify them during updates.
 
 ### **Steps:**
 
-#### 1. Manually create S3 bucket and DynamoDB
-The state management is configured with an S3 backend and DynamoDB table for state locking.
-Make sure the DynamoDB is with partition key `LockID`.
-
-![image](https://github.com/user-attachments/assets/63affaaa-a441-4562-81e2-6bcde983965a)
-![image](https://github.com/user-attachments/assets/23d00faa-1417-4f8e-8f8c-92e59f5289ac)
-
-#### 2. Manually create VPC with CIDR `10.0.0.0/16`
-![image](https://github.com/user-attachments/assets/a51711ef-a157-4e2a-a7e3-39b4d4769bbd)
-
-Use data block to get vpc id in configuration.
-```
-data "aws_vpc" "ivolve" {
-  filter {
-    name   = "tag:Name"
-    values = ["ivolve"]
-  }
-}
-```
-
-#### 3. Initialize Terraform
+#### 1. Initialize Terraform
 ```
 terraform init
 ```
-#### 4. Plan the deployment 
+#### 2. Plan the deployment 
 ```
 terraform plan
 ```
-#### 5. Apply the configuration
+#### 3. Apply the configuration
 ```
 instanceterraform apply
 ```
-#### 6. Verify the deployed resources in the AWS Management Console 
-Network Resouce Map
-
-![image](https://github.com/user-attachments/assets/3a33cc69-28c0-4985-b3b3-ec225c2c5db1)
-
-Instance
-
-![image](https://github.com/user-attachments/assets/e161f4ad-2917-4fcf-a695-a6149d360313)
-
-Security group of the instance 
-
-![image](https://github.com/user-attachments/assets/0fb445ae-1cda-43e7-b391-2fa0471913c1)
-
-RDS 
-
-![image](https://github.com/user-attachments/assets/9cd92bde-3033-453f-82fc-1b243e0136a7)
-
+#### 4. Verify the deployed resources from the email for the subscribtion confirmation
+![image](https://github.com/user-attachments/assets/6d1fda71-9a23-4a2a-8239-1aa1e43a375e)
