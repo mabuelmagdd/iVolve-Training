@@ -3,6 +3,7 @@
 ## **Objective**
 
 ### Build a serverless application using AWS Lambda, API Gateway, and DynamoDB
+This tutorial demonstrates how to create a serverless API for performing CRUD (Create, Read, Update, Delete) operations on a DynamoDB table. The API is built using AWS Lambda for backend logic and API Gateway for routing HTTP requests.
 ![image](https://github.com/user-attachments/assets/4e491ea1-7691-41f8-96eb-fda85fe9bb5c)
 
 ### **Steps:**
