@@ -1,6 +1,6 @@
 # Lab 17 - Multi-Tier Application Deployment with Terraform
 
-### **Objective**
+## **Objective**
 
 ### Create ‘ivolve’ VPC manually in AWS and use Data block to get VPC id in your configuration file. Use Terraform to define and deploy a multi-tier architecture including 2 subnets, EC2, and RDS database. Use local provisioner to write the EC2 IP in a file called ec2-ip.txt.
 
@@ -17,6 +17,7 @@ Make sure the following files are present:
 #### 1. Manually create S3 bucket and DynamoDB
 The state management is configured with an S3 backend and DynamoDB table for state locking.
 Make sure the DynamoDB is with partition key `LockID`.
+
 ![image](https://github.com/user-attachments/assets/63affaaa-a441-4562-81e2-6bcde983965a)
 ![image](https://github.com/user-attachments/assets/23d00faa-1417-4f8e-8f8c-92e59f5289ac)
 
