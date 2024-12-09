@@ -6,13 +6,13 @@
 
 ![image](https://github.com/user-attachments/assets/879e55e5-b3f8-4a51-9fd4-5499e85de7cf)
 
-#### **File Structure**
+### **File Structure**
 Make sure the following files are present:
 - `main.tf`: Defines the core infrastructure (VPC, subnets, security groups, instances, etc.)
 - `providers.tf`: Specifies provider configuration.
 - `backend.tf`: Configures state management.
 
-#### **Steps:**
+### **Steps:**
 
 #### 1. Manually create S3 bucket and DynamoDB
 The state management is configured with an S3 backend and DynamoDB table for state locking.
