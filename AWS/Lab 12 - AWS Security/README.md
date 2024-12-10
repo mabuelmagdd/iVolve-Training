@@ -1,4 +1,4 @@
-# iVolve Technologies - Lab12 - AWS Security
+# Lab12 - AWS Security
 
 ## **Objective**
 
