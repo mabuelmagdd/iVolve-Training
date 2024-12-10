@@ -1,9 +1,17 @@
-# AWS Architecture Deployment with Terraform
+# Lab21 - Terraform Workspace
 
 ![image](https://github.com/user-attachments/assets/29d72172-26c5-40ec-b920-4490e48bc4b6)
 
 ## Overview
 This Terraform project sets up an AWS infrastructure with load balancers, reverse proxy and web server EC2 instances, autoscaling, and network configuration within a VPC. This design ensures scalable and secure web hosting, with organized modules for ease of maintenance and reusability.
+
+### Workspaces in terraform
+In Terraform, workspaces are used to manage multiple environments (such as development, staging, production) within the same configuration. Each workspace has its own state file, which allows you to maintain separate instances of your infrastructure while using the same Terraform configuration.
+
+Key Features of Workspaces:
+- Isolated State Files: Each workspace has its own state file, so you can safely deploy to different environments without interfering with each other.
+- Same Configuration: You can use the same Terraform code across different workspaces but manage different infrastructure instances.
+- Environment Separation: Workspaces are ideal for managing environments like development, staging, and production with separate configurations, variables, and state files.
 
 ## Project Structure
 
