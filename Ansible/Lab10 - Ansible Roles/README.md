@@ -1,4 +1,4 @@
-# iVolve Technologies - Lab10 - Ansible Roles for Application Deployment
+# Lab10 - Ansible Roles for Application Deployment
 
 ## **Objective**
 
