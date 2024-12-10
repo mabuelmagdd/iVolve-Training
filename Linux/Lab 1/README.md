@@ -1,4 +1,4 @@
-# iVolve Technologies - Lab1 
+# Lab1 -  User and Group Management
 
 ## Requirements
 
