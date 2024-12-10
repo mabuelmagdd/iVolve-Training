@@ -122,4 +122,5 @@ Set up paths for:
 
 #### 5. Create Integrations
 Connect API routes to the Lambda function
+
 ![image](https://github.com/user-attachments/assets/60515b89-9086-4987-aa8c-e86b3fb28ab7)
