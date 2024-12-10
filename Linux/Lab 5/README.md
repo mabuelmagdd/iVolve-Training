@@ -1,4 +1,4 @@
-# iVolve Technologies - Lab5 - Disk Management and Logical Volume Setup
+# Lab5 - Disk Management and Logical Volume Setup
 
 ## Objective
 
