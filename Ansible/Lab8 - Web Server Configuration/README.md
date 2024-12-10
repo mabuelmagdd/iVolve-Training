@@ -1,4 +1,4 @@
-# iVolve Technologies - Lab8 -  Ansible Playbooks for Web Server Configuration
+# Lab8 -  Ansible Playbooks for Web Server Configuration
 
 ## Objective
 
