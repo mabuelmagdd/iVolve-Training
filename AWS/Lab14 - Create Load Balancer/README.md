@@ -1,4 +1,4 @@
-# iVolve Technologies - Lab 14 - Create AWS Load Balancer
+# Lab 14 - Create AWS Load Balancer
 
 ## **Objective**
 
