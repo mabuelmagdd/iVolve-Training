@@ -1,4 +1,4 @@
-# iVolve Technologies - Lab11 - Ansible Dynamic Inventories
+# Lab11 - Ansible Dynamic Inventories
 
 ## **Objective**
 
