@@ -1,4 +1,4 @@
-# iVolve Technologies - Lab7 - Ansible Installation
+# Lab7 - Ansible Installation
 
 ## Objective
 
