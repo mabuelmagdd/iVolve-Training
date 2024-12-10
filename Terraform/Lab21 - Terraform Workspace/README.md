@@ -1,6 +1,6 @@
 # Lab21 - Terraform Workspace
 
-![image](https://github.com/user-attachments/assets/29d72172-26c5-40ec-b920-4490e48bc4b6)
+![Alt text](AWS%20network%20diagram.png)
 
 ## Overview
 This Terraform project sets up an AWS infrastructure with load balancers, reverse proxy and web server EC2 instances, autoscaling, and network configuration within a VPC. This design ensures scalable and secure web hosting, with organized modules for ease of maintenance and reusability.
