@@ -3,7 +3,7 @@
 ## **Objective**
 
 ## Organize Ansible playbooks using roles. Create an Ansible role for installing Jenkins, docker, openshift CLI ‘OC’.
-**What is role?**
+**What is a role?**
 An Ansible role is a collection of tasks used to configure a host for a specific purpose, such as configuring a service. YAML files with a predefined directory structure are used to define roles. The following directories are found in a role directory structure: defaults, vars, tasks, files, templates, meta, and handlers.
 ## **Prerequisites**
 1. Before running this lab, ensure you have the following:
