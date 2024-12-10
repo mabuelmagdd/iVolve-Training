@@ -1,4 +1,4 @@
-# iVolve Technologies - Lab9 -  Ansible Vault
+# Lab9 -  Ansible Vault
 
 ## Objective
 
