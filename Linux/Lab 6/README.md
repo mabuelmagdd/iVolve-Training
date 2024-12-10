@@ -1,4 +1,4 @@
-# iVolve Technologies - Lab6 - SSH Configurations
+# Lab6 - SSH Configurations
 
 ## Objective
 
