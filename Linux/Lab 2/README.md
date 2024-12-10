@@ -1,4 +1,4 @@
-# iVolve Technologies - Lab2 - Shell Scripting Basics 1 
+# Lab2 - Shell Scripting Basics 1 
 
 ## Objective
 
