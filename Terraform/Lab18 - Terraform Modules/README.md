@@ -3,7 +3,7 @@
 ## **Objective**
 
 ###  Create VPC with 2 public subnets in main.tf file. Create EC2 module to create 1 EC2 with Nginx installed on it using user data. Use this module to deploy 1 EC2 in each subnet. 
-![image](https://github.com/user-attachments/assets/87137ff4-d179-4845-9bd4-1235234cade3)
+![image](https://github.com/user-attachments/assets/424eee15-789b-4770-8f18-86b04a22d4b1)
 
 
 ### **File Structure**
