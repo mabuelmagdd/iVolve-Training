@@ -10,6 +10,7 @@ This tutorial demonstrates how to create a serverless API for performing CRUD (C
 
 #### 1. Create a DynamoDB Table
 Store items with a unique `id` as the partition key.
+
 ![image](https://github.com/user-attachments/assets/739f26ab-2e6c-4972-a2c3-f557f557fc53)
 
 #### 2. Create a Lambda Function
