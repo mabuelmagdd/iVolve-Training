@@ -1,4 +1,4 @@
-# iVolve Technologies - Lab 15 - SDK and CLI Interactions
+# Lab 15 - SDK and CLI Interactions
 
 ## **Objective**
 
