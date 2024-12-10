@@ -1,4 +1,4 @@
-# iVolve Technologies - Lab 13 - Launching an EC2 Instance
+# Lab 13 - Launching an EC2 Instance
 
 ## **Objective**
 
