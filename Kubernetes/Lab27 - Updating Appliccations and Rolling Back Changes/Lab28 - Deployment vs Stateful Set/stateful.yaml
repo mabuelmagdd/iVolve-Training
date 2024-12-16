@@ -1,0 +1,38 @@
+apiVersion: apps/v1
+kind: StatefulSet
+metadata:
+  name: mysql
+  labels:
+    app: mysql
+spec:
+  serviceName: "mysql"
+  replicas: 3  # We are creating 3 replicas of MySQL for high availability.
+  selector:
+    matchLabels:
+      app: mysql
+  template:
+    metadata:
+      labels:
+        app: mysql
+    spec:
+      terminationGracePeriodSeconds: 10  # Grace period for termination of MySQL pods.
+      containers:
+        - name: mysql
+          image: mysql:8.0  # MySQL Docker image version 8.0.
+          ports:
+            - containerPort: 3306  # MySQL default port.
+          env:
+            - name: MYSQL_ROOT_PASSWORD  # Environment variable for setting the root password.
+              value: "rootpassword"
+          volumeMounts:
+            - name: mysql-data  # Mounting persistent storage for MySQL.
+              mountPath: /var/lib/mysql  # MySQL stores its data here.
+  volumeClaimTemplates:
+    - metadata:
+        name: mysql-data  # Define the PersistentVolumeClaim to create stable storage for each Pod.
+      spec:
+        accessModes: ["ReadWriteOnce"]
+        storageClassName: "standard"  # Define the storage class for the persistent volume.
+        resources:
+          requests:
+            storage: 1Gi  # Each MySQL pod will get 1Gi of storage.
