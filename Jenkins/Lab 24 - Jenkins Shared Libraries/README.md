@@ -10,15 +10,7 @@
 Before running this lab, ensure you have the following:
 - add **Docker Hub** credentials (username,password) in Jenkins credentials 
 Ensure you have the following files:
-- (your-repo)
-├── Jenkinsfile
-├── src/
-    ├── vars/
-    │   ├── dockerBuild.groovy
-    │   ├── dockerPush.groovy
-    │   ├── updateYaml.groovy
-    │   └── deployK8s.groovy
-
+- Jenkins > src/vars/`dockerBuild.groovy`, `dockerPush.groovy`, `updateYaml.groovy`, `deployK8s.groovy`
 - `Dockerfile`
 - `index.html`
 - `deployment.yaml`
@@ -98,7 +90,7 @@ pipeline {
 
 ```
  #### 3. Build the pipeline
-
+ 
  #### 4. Check Deployments and Pods in the cluster  
 
 
