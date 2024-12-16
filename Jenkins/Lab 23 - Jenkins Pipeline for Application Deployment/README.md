@@ -3,6 +3,7 @@
 ## **Objective**
 
 ### Create a Jenkins pipeline that automates the following processes: Build Docker image from Dockerfile in GitHub. Push image to Docker hub. Edit new image in deployment.yaml file. Deploy to k8s. Make any ‘Post action’ in your Jenkinsfile.
+![image](https://github.com/user-attachments/assets/b6df466a-1c2e-4c18-a524-a2d6538ebdc7)
 
 ## **Steps:**
 
@@ -45,7 +46,9 @@ In the Repository URL field, enter the URL of GitHub repository (e.g., https://g
 - Purpose: Cleans up local resources (Docker images) to free up space
  
  #### 3. Build the pipeline
+![image](https://github.com/user-attachments/assets/435acaf6-da2d-4e09-94a9-a7de40554e5f)
 
  #### 4. Check Deployments and Pods in the cluster  
+![image](https://github.com/user-attachments/assets/33f4bdd7-6a9d-4dad-9b99-c32437cdd72b)
 
 
