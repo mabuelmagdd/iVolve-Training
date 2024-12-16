@@ -100,10 +100,11 @@ The headless service is used to give stable DNS names to the Pods in the Statefu
 #### 3. Test 
 ```
 kubectl get pods
-
 ```
+![image](https://github.com/user-attachments/assets/125a1ef6-d09c-40cb-887c-8a6a90940190)
 ```
 kubectl get pvc
-
 ```
+![image](https://github.com/user-attachments/assets/b7b1f9a6-1257-41fa-892f-465e75186e88)
+
 
