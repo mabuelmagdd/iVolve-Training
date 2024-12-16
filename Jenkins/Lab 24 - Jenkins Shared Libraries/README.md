@@ -23,6 +23,7 @@ Jenkins > Manage Jenkins > Configure System > Global Pipeline Libraries > (use t
 - Repository URL: https://github.com/your-username/your-repo.git
 - Branch: main
 - Library Directory: src/vars (this tells Jenkins to look for the library in the src/vars directory within the repository)
+![image](https://github.com/user-attachments/assets/78434cc7-b237-41ea-a6d9-65f0a9a3f4f0)
 
 #### 2. Use the Shared Library in Your Pipeline: Now that the library is configured, can use it in Jenkinsfile as before:
 ```
@@ -90,7 +91,9 @@ pipeline {
 
 ```
  #### 3. Build the pipeline
- 
+ ![image](https://github.com/user-attachments/assets/fdd37bae-bc96-4053-9c3c-32ba90e9303b)
+
  #### 4. Check Deployments and Pods in the cluster  
+![image](https://github.com/user-attachments/assets/e21d761b-5ee9-47fb-8adf-6390c7c3502a)
 
 
