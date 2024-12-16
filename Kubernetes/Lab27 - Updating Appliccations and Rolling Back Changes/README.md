@@ -40,9 +40,9 @@ Apply the YAML to create the deployment:
 kubectl apply -f nginx-service.yaml
 ```
 #### 3. Use Port Forwarding to Access the NGINX Service Locally
-This command forwards port 8080 on your local machine to port 80 on the nginx-service running in Kubernetes.
+This command forwards port 9090 on your local machine to port 80 on the nginx-service running in Kubernetes.
 ```
- kubectl port-forward service/nginx-service 8080:80
+ kubectl port-forward service/nginx-service 9090:80
 ```
 access the NGINX service locally via the browser
 
