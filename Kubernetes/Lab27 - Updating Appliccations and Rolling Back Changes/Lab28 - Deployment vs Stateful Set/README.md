@@ -96,7 +96,7 @@ spec:
   selector:
     app: mysql  
 ```
-
+The headless service is used to give stable DNS names to the Pods in the StatefulSet. This is important because the Pods need a stable network identity (e.g., mysql-0.mysql, mysql-1.mysql, mysql-2.mysql). This ensures that when MySQL nodes need to communicate with each other, they can do so reliably using these DNS names.
 #### 3. Test 
 ```
 kubectl get pods
