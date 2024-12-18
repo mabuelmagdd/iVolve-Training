@@ -23,6 +23,8 @@ docker build -t static-website:latest .
 ```
 docker images
 ```
+![image](https://github.com/user-attachments/assets/bf5f8819-028e-4f99-bf1f-de9a45b1c061)
+
 #### 2. Push the Image to Docker Hub
 1. Log in to Docker Hub
 ```
@@ -92,6 +94,7 @@ For the domain name (static-website.local) to work, it needs to map to the Minik
 ```
 http://static-website.local
 ```
+![image](https://github.com/user-attachments/assets/7d5e7ec6-d4a2-414a-b361-8effb2c95174)
 
 
 
