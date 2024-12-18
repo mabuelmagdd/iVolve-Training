@@ -109,6 +109,7 @@ kubectl get pods
 kubectl get deployment
 ```
 One pod should be unavailable due to the resource quota.
+![image](https://github.com/user-attachments/assets/f9979c3e-7fa7-4ce1-b322-90474d1e6d8c)
 
 2.Exec into a running MySQL pod to verify the configurations 
 ```
@@ -120,6 +121,8 @@ mysql -u user -p
 ```
 SHOW DATABASES;
 ```
+![image](https://github.com/user-attachments/assets/7d7d3b17-3c6b-47e6-9361-5527673eafad)
+
 
 
 
