@@ -16,7 +16,8 @@ kubectl create namespace ivolve
 kubectl config set-context $(kubectl config current-context) --namespace=ivolve
 ```
 
-#### 2. Create Resource Quota 
+#### 2. Create Resource Quota
+- A ResourceQuota is a Kubernetes object that allows you to limit the total resources (like CPU, memory, or the number of pods) that can be consumed by all resources within a specific namespace.
 Create `quota.yaml` file
 ```
 apiVersion: v1
