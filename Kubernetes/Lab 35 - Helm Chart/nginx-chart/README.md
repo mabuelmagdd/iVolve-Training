@@ -73,6 +73,7 @@ http://<minikube-ip>:<service-port>
 minikube tunnel
 ```
 This command runs in the background and exposes the services, allowing you to access them using the Minikube IP without needing to manually find the port.
+
 ![image](https://github.com/user-attachments/assets/39cd3c60-a282-4027-bb05-3785e60f166a)
 
 #### 3. Delete the Nginx Release
