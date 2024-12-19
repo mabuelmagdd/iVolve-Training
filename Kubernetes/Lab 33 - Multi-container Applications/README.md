@@ -1,4 +1,4 @@
-#  DMulti-container Applications 
+#  Multi-container Applications 
 
 ## **Objective**
 
