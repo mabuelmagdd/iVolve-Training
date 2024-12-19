@@ -71,4 +71,5 @@ kubectl get pods
 kubectl get nodes -o wide
 ```
 - Open http://<Node-IP>:32000 in a browser.
+
 ![image](https://github.com/user-attachments/assets/c15d5268-2685-4dec-a065-739a85ee8a17)
