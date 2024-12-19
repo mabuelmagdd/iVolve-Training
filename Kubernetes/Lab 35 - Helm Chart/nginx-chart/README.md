@@ -3,6 +3,8 @@
 ## **Objective**
 
 ### Create a new Helm chart for Nginx. Deploy the Helm chart and verify the deployment. Access the Nginx server. Delete nginx release.
+![image](https://github.com/user-attachments/assets/635cf861-85a6-42ba-8447-aff641ce0a53)
+
 **What is Helm?**
 Helm is a package manager for Kubernetes that helps you manage complex applications in a Kubernetes cluster by simplifying the process of deploying, updating, and managing apps. It allows you to easily define, install, and upgrade applications, much like how a package manager like apt or yum works for operating systems.
 
