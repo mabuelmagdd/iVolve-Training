@@ -3,10 +3,9 @@
 ## **Objective**
 
 ### This lab focuses on managing node-specific configurations, ensuring efficient resource utilization, and controlling pod scheduling in a Kubernetes cluster.
-## Step 2: Differences
 
 #### Init Container vs. Sidecar Container
-** Init Container**
+**Init Container**
 - Init containers are designed to run before the main application container starts.
 - They ensure some pre-requisites are met (e.g., downloading configuration files or waiting for other services).
 
