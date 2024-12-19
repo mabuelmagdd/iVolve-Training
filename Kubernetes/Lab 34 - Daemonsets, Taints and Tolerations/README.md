@@ -4,6 +4,7 @@
 
 ### This lab focuses on managing node-specific configurations, ensuring efficient resource utilization, and controlling pod scheduling in a Kubernetes cluster.
 **What is a DaemonSet?**
+![image](https://github.com/user-attachments/assets/f1f40f8e-64c0-490c-abfd-7c181875ce01)
 
 A DaemonSet ensures that all (or some) Nodes run a copy of a Pod. As nodes are added to the cluster, Pods are added to them. As nodes are removed from the cluster, those Pods are garbage collected. Deleting a DaemonSet will clean up the Pods it created.
 In Kubernetes, a DaemonSet is named after the concept of a daemon because it is responsible for running specific pods on each node in the cluster to perform background tasks or provide essential services.
@@ -14,6 +15,7 @@ In Kubernetes, a DaemonSet is named after the concept of a daemon because it is 
 - `kube proxy` on each node that handles network communication within the cluster can be deployed as a DaemonSet.
 
 **Comparison between Taint & Toleration & Node Affinity**
+![image](https://github.com/user-attachments/assets/fa493bc0-5dee-4351-8432-74ac4170e5f7)  ![image](https://github.com/user-attachments/assets/53a78e04-9d1c-4994-b5de-3d5ef8745123)
 
 
 | **Aspect**            | **Taint & Toleration**                                               | **Node Affinity**                                               |
@@ -63,6 +65,9 @@ The pod will remain in a Pending state because it does not have a toleration mat
 ```
 kubectl get pods
 ```
+![image](https://github.com/user-attachments/assets/4807bf7e-fabd-4c73-9efe-0d6c029b01dd)
+![image](https://github.com/user-attachments/assets/e984ce71-41f2-446a-b35a-da8ccf07d256)
+
 #### 4. Update Toleration to Match the Taint
 1. Edit the Pod YAML to Tolerate the Taint
 ```
@@ -77,4 +82,5 @@ The pod will now be scheduled and run on the Minikube node.
 ```
 kubectl get pods
 ```
+![image](https://github.com/user-attachments/assets/5375acfc-c3ea-4fe8-aeca-5b67b651971c)
 
