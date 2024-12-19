@@ -1,0 +1,40 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: jenkins-deployment
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: jenkins
+  template:
+    metadata:
+      labels:
+        app: jenkins
+    spec:
+      containers:
+      - name: jenkins
+        image: jenkins/jenkins:lts
+        ports:
+        - containerPort: 8081
+        env:
+        - name: JENKINS_OPTS
+          value: --httpPort=8081 
+        readinessProbe:
+          httpGet:
+            path: /login
+            port: 8081
+          initialDelaySeconds: 30
+          periodSeconds: 10
+        livenessProbe:
+          httpGet:
+            path: /login
+            port: 8081
+
+          initialDelaySeconds: 60
+          periodSeconds: 10
+      initContainers:
+      - name: init-container
+        image: busybox
+        command: ["sh", "-c", "echo Initializing; sleep 10"]
+
